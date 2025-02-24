@@ -44,5 +44,5 @@ The entire website is designed with a dark theme, ensuring a modern, sleek look 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/nfa-dfa-converter.git
+   git clone https://github.com/Saikrishna216/nfa-dfa-converter.git
    cd nfa-dfa-converter
