@@ -7,4 +7,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  base: '/NFA_DFA_Converter/', // Base path for GitHub Pages
 });
