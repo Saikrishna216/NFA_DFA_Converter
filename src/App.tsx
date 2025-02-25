@@ -1,11 +1,14 @@
 // App.tsx
-import React, { useState, useCallback } from "react";
-import { Upload, Download, Play, Plus, Trash2 } from "lucide-react";
+import { useState, useCallback } from "react";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
+import { Download, Play, Plus, Trash2 } from "lucide-react";
+import Home from "./Home.tsx";
+import DfaGraph from "./DfaGraph";
 import { NFAState, Transition, DFAConversionResult } from "./types";
 import { convertNFAtoDFA } from "./converter";
-import DfaGraph from "./DfaGraph";
 
-function App() {
+// Converter Component containing your NFA-to-DFA converter logic
+function Converter() {
   const [states, setStates] = useState<NFAState[]>([]);
   const [startState, setStartState] = useState<string>("");
   const [finalStates, setFinalStates] = useState<Set<string>>(new Set());
@@ -322,6 +325,30 @@ function App() {
         )}
       </main>
     </div>
+  );
+}
+
+// Main App component with routing
+function App() {
+  return (
+    <HashRouter>
+      <div>
+        <nav className="bg-gray-800 text-white p-4">
+          <ul className="flex space-x-4">
+            <li>
+              <Link to="/" className="hover:text-gray-300">Home</Link>
+            </li>
+            <li>
+              <Link to="/converter" className="hover:text-gray-300">Converter</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/converter" element={<Converter />} />
+        </Routes>
+      </div>
+    </HashRouter>
   );
 }
 
